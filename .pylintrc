@@ -1,0 +1,12 @@
+[MASTER]
+
+# Load the DocStringChecker and line_length_linter plugins.
+load-plugins=lint,line_length_lint
+
+# We actually want to disable all standard pylint checkers, enable
+# DocStringChecker and line_length_linter, then disable specific checks in the
+# plugins, but there does not seem to be a way of doing that. Instead, we
+# disable everything aside from the whitelist of DocStringChecker checks that
+# we want.
+disable=all
+enable=docstring-trailing-whitespace,docstring-leading-whitespace,docstring-cuddled-quotes,docstring-section-newline,docstring-section-name,docstring-section-order,docstring-first-line,docstring-missing-args,docstring-misnamed-args,docstring-arg-spacing,docstring-too-many-newlines,docstring-second-line-blank,docstring-section-indent,line-length

@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Exit build script on first failure
+set -e
+
+# Echo commands to stdout.
+set -x
+
+# Location of app source files.
+SOURCE_DIR=python_seed
+
+# Location of unit tests.
+TEST_DIR=tests
+
+# Delete pyc files from previous builds.
+find . -name "*.pyc" -delete
+
+# Run unit tests and calculate code coverage.
+coverage run \
+  --source "$SOURCE_DIR" \
+  -m unittest discover
+
+# Check that source has correct formatting.
+yapf --diff --recursive --style google ./ --exclude=third_party/*
+
+# Run static analysis for Python bugs/cruft.
+pyflakes "${SOURCE_DIR}/" "${TEST_DIR}/"
+
+# Run custom linters.
+LINTER_PATHS="$(pwd)/third_party/docstringchecker"
+LINTER_PATHS+=":$(pwd)/third_party/line_length_linter"
+PYTHONPATH="${PYTHONPATH}:${LINTER_PATHS}" \
+  pylint --reports=n --rcfile=.pylintrc "$SOURCE_DIR" "$TEST_DIR"
