@@ -1,7 +1,7 @@
 # Python Seed
 
-[![Build Status](https://travis-ci.org/mtlynch/python_seed.svg?branch=master)](https://travis-ci.org/mtlynch/python_seed)
-[![Coverage Status](https://coveralls.io/repos/github/mtlynch/python_seed/badge.svg?branch=master)](https://coveralls.io/github/mtlynch/python_seed?branch=master)
+[![Build Status](https://travis-ci.org/mtlynch/python3_seed.svg?branch=master)](https://travis-ci.org/mtlynch/python3_seed)
+[![Coverage Status](https://coveralls.io/repos/github/mtlynch/python3_seed/badge.svg?branch=master)](https://coveralls.io/github/mtlynch/python3_seed?branch=master)
 
 ## Overview
 
