@@ -1,9 +1,10 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 
 import argparse
 import logging
 
 logger = logging.getLogger(__name__)
+
 
 def configure_logging():
     root_logger = logging.getLogger()
@@ -22,5 +23,7 @@ def main(args):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(prog='Python Seed', formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        prog='Python Seed',
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     main(parser.parse_args())
