@@ -1,4 +1,3 @@
-mock
 pyflakes==2.0.0
 pylint==1.5.0
 yapf==0.22.0
