@@ -21,7 +21,13 @@ coverage run \
   -m unittest discover
 
 # Check that source has correct formatting.
-yapf --diff --recursive --style google ./ --exclude=third_party/*
+yapf \
+  --diff \
+  --recursive \
+  --style google \
+  ./ \
+  --exclude=third_party/* \
+  --exclude=venv/*
 
 # Run static analysis for Python bugs/cruft.
 pyflakes "${SOURCE_DIR}/" "${TEST_DIR}/"
