@@ -3,6 +3,7 @@
 # Load the DocStringChecker plugin.
 load-plugins=lint
 
+# We actually want to disable all standard pylint checkers, enable
 # DocStringChecker, then disable specific checks in DocStringChecker, but there
 # does not seem to be a way of doing that. Instead, we disable everything aside
 # from the whitelist of DocStringChecker checks that we want.
