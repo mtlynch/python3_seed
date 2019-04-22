@@ -26,8 +26,6 @@ yapf --diff --recursive --style google ./ --exclude=third_party/*
 # Run static analysis for Python bugs/cruft.
 pyflakes "${SOURCE_DIR}/" "${TEST_DIR}/"
 
-# Run custom linters.
-LINTER_PATHS="$(pwd)/third_party/docstringchecker"
-LINTER_PATHS+=":$(pwd)/third_party/line_length_linter"
-PYTHONPATH="${PYTHONPATH}:${LINTER_PATHS}" \
+# Check docstrings for style consistency.
+PYTHONPATH=$PYTHONPATH:$(pwd)/third_party/docstringchecker \
   pylint --reports=n --rcfile=.pylintrc "$SOURCE_DIR" "$TEST_DIR"
