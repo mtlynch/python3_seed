@@ -7,7 +7,7 @@ set -e
 set -x
 
 # Location of app source files.
-SOURCE_DIR=python_seed
+SOURCE_DIR=app
 
 # Location of unit tests.
 TEST_DIR=tests
