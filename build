@@ -29,6 +29,13 @@ yapf \
   --exclude=third_party/* \
   --exclude=venv/*
 
+# Check correct sorting for imports.
+isort \
+  --recursive \
+  --check-only \
+  --skip-glob=third_party/* \
+  --skip-glob=venv/*
+
 # Run static analysis for Python bugs/cruft.
 pyflakes "${SOURCE_DIR}/" "${TEST_DIR}/"
 
