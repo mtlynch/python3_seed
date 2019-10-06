@@ -11,3 +11,4 @@ Specifically:
 * Enforces Python style rules with [YAPF](https://github.com/google/yapf)
 * Enforces style rules on docstrings using [DocStringChecker](https://chromium.googlesource.com/chromiumos/chromite/+/master/cli/cros/lint.py)
 * Perfoms static analysis with [pyflakes](https://github.com/megies/pyflakes)
+* Sorts imports with [isort](https://github.com/timothycrosley/isort)
