@@ -19,6 +19,7 @@ find . -name "*.pyc" -delete
 coverage run \
   --source "$SOURCE_DIR" \
   -m unittest discover
+coverage report
 
 # Check that source has correct formatting.
 yapf \
