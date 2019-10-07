@@ -33,6 +33,7 @@ yapf \
 # Check correct sorting for imports.
 isort \
   --recursive \
+  --force-single-line-imports \
   --check-only \
   --skip-glob=third_party/* \
   --skip-glob=venv/*
