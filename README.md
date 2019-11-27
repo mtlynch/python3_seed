@@ -12,3 +12,19 @@ Specifically:
 * Enforces style rules on docstrings using [DocStringChecker](https://chromium.googlesource.com/chromiumos/chromite/+/master/cli/cros/lint.py)
 * Perfoms static analysis with [pyflakes](https://github.com/megies/pyflakes)
 * Sorts imports with [isort](https://github.com/timothycrosley/isort)
+
+## Installation
+
+```bash
+mkdir -p ./venv
+virtualenv --python python3 ./venv
+. venv/bin/activate
+pip install --requirement requirements.txt
+pip install --requirement dev_requirements.txt
+```
+
+## Run
+
+```bash
+./app/main.py
+```
