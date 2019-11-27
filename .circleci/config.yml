@@ -11,7 +11,6 @@ jobs:
             mkdir -p ./venv
             virtualenv --python python3 ./venv
             . venv/bin/activate
-            pip install pyyaml coveralls
             pip install --requirement requirements.txt
             pip install --requirement dev_requirements.txt
             ./build
@@ -19,25 +18,7 @@ jobs:
           root: ./
           paths:
             - .coverage
-  upload-coverage:
-    docker:
-      - image: circleci/python:3.7.3
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ./
-      - run:
-          name: Install and run Coveralls
-          command: |
-            mkdir -p ./venv
-            virtualenv --python python3 ./venv
-            . venv/bin/activate
-            pip install pyyaml coveralls
-            coveralls
 workflows:
   test:
     jobs:
       - build
-      - upload-coverage:
-          requires:
-            - build
