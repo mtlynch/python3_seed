@@ -3,6 +3,8 @@
 import argparse
 import logging
 
+import dummy
+
 logger = logging.getLogger(__name__)
 
 
@@ -20,6 +22,7 @@ def configure_logging():
 def main(args):
     configure_logging()
     logger.info('Started runnning')
+    print(dummy.dummy())
 
 
 if __name__ == '__main__':
