@@ -34,6 +34,7 @@ yapf \
 isort \
   --recursive \
   --force-single-line-imports \
+  --diff \
   --check-only \
   --skip-glob=third_party/* \
   --skip-glob=venv/*
