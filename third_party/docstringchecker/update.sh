@@ -20,7 +20,7 @@ wget \
   > "$LINT_OUTPUT_FILE"
 
 MEMOIZE_OUTPUT_DIR=$(dirname "$0")/chromite/utils
-MEMOIZE_OUTPUT_FILE="${LINT_OUTPUT_DIR}/memoize.py"
+MEMOIZE_OUTPUT_FILE="${MEMOIZE_OUTPUT_DIR}/memoize.py"
 
 wget \
   https://chromium.googlesource.com/chromiumos/chromite/+/master/utils/memoize.py?format=TEXT \
