@@ -1,10 +1,13 @@
 #!/bin/bash
 
-# Exit build script on first failure
+# Exit build script on first failure.
 set -e
 
 # Echo commands to stdout.
 set -x
+
+# Exit on unset variable.
+set -u
 
 # Location of app source files.
 SOURCE_DIR=app
@@ -50,5 +53,5 @@ isort \
 pyflakes "${SOURCE_DIR}/" "${TEST_DIR}/"
 
 # Check docstrings for style consistency.
-PYTHONPATH=$PYTHONPATH:$(pwd)/third_party/docstringchecker \
+PYTHONPATH="$(pwd)/third_party/docstringchecker" \
   pylint --reports=n --rcfile=.pylintrc "$SOURCE_DIR" "$TEST_DIR"
