@@ -53,5 +53,5 @@ isort \
 pyflakes "${SOURCE_DIR}/" "${TEST_DIR}/"
 
 # Check docstrings for style consistency.
-PYTHONPATH=$PYTHONPATH:$(pwd)/third_party/docstringchecker \
+PYTHONPATH="$(pwd)/third_party/docstringchecker" \
   pylint --reports=n --rcfile=.pylintrc "$SOURCE_DIR" "$TEST_DIR"
