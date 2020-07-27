@@ -1,4 +1,4 @@
-coverage==5.2
+coverage==5.2.1
 isort[requirements]==5.1.4
 pyflakes==2.2.0
 # DocStringChecker currently only works with pylint 1.6.5. Upgrading causes it
