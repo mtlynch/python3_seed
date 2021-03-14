@@ -1,5 +1,5 @@
 coverage==5.5
-isort[requirements]==5.7.0
+isort[requirements_deprecated_finder]==5.7.0
 pyflakes==2.2.0
 # DocStringChecker currently only works with pylint 1.6.5. Upgrading causes it
 # to stop producing errors on bad docstrings.
