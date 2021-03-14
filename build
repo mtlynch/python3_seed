@@ -43,7 +43,6 @@ yapf \
 # Check correct sorting for imports.
 isort \
   . \
-  --recursive \
   --force-single-line-imports \
   --diff \
   --check-only \
