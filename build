@@ -10,13 +10,10 @@ set -x
 set -u
 
 # Location of app source files.
-SOURCE_DIR=app
-
-# Location of unit tests.
-TEST_DIR=tests
+readonly SOURCE_DIR=app
 
 # Location of virtualenv.
-VIRTUALENV_DIR=venv
+readonly VIRTUALENV_DIR=venv
 
 # Delete pyc files from previous builds.
 find . \
@@ -27,8 +24,9 @@ find . \
 
 # Run unit tests and calculate code coverage.
 coverage run \
-  --source "$SOURCE_DIR" \
-  -m unittest discover
+  --source "${SOURCE_DIR}" \
+  --omit "*_test.py" \
+  -m unittest discover --pattern "*_test.py"
 coverage report
 
 # Check that source has correct formatting.
@@ -38,7 +36,7 @@ yapf \
   --style google \
   ./ \
   --exclude=third_party/* \
-  --exclude=venv/*
+  --exclude="${VIRTUALENV_DIR}/*"
 
 # Check correct sorting for imports.
 isort \
@@ -47,11 +45,11 @@ isort \
   --diff \
   --check-only \
   --skip-glob=third_party/* \
-  --skip-glob=venv/*
+  --skip-glob="${VIRTUALENV_DIR}/*"
 
 # Run static analysis for Python bugs/cruft.
-pyflakes "${SOURCE_DIR}/" "${TEST_DIR}/"
+pyflakes "${SOURCE_DIR}/"
 
 # Check docstrings for style consistency.
 PYTHONPATH="$(pwd)/third_party/docstringchecker" \
-  pylint --reports=n --rcfile=.pylintrc "$SOURCE_DIR" "$TEST_DIR"
+  pylint --reports=n --rcfile=.pylintrc "${SOURCE_DIR}"
