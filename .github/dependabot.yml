@@ -7,6 +7,8 @@ updates:
     time: "10:00"
   open-pull-requests-limit: 10
   ignore:
+  # We need to use a specific pylint version that's compatible with
+  # DocStringChecker.
   - dependency-name: pylint
     versions:
     - ">= 0"
