@@ -21,7 +21,7 @@ virtualenv --python python3 ./venv
 . venv/bin/activate
 pip install --requirement requirements.txt
 pip install --requirement dev_requirements.txt
-hooks/enable_hooks
+./dev-scripts/enable-git-hooks
 ```
 
 ## Customization
