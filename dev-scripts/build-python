@@ -30,12 +30,7 @@ coverage run \
 coverage report
 
 # Check that source has correct formatting.
-yapf \
-  --diff \
-  --recursive \
-  --style google \
-  ./ \
-  --exclude="${VIRTUALENV_DIR}/*"
+yapf --diff --recursive ./
 
 # Check correct sorting for imports.
 isort \
