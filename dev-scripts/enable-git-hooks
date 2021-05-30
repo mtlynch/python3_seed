@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Run this to enable all git hooks for this project.
+
+# Exit build script on first failure.
+set -e
+
+# Echo commands to stdout.
+set -x
+
+# Exit on unset variable.
+set -u
+
+# If there's an existing symlink, remove it.
+if [[ -L .git/hooks ]]
+then
+  rm .git/hooks
+fi
+
+# If it's a regular directory, remove all files.
+if [[ -d .git/hooks ]]
+then
+  rm -rf .git/hooks
+fi
+
+# Change directory to repository root.
+readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd "${SCRIPT_DIR}/.."
+
+ln --symbolic --force ../dev-scripts/git-hooks .git/hooks
