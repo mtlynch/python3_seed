@@ -13,7 +13,7 @@ jobs:
             . venv/bin/activate
             pip install --requirement requirements.txt
             pip install --requirement dev_requirements.txt
-            ./build
+            ./dev-scripts/build
       - persist_to_workspace:
           root: ./
           paths:
