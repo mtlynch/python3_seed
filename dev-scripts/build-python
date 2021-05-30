@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# Exit build script on first failure.
+set -e
+
+# Echo commands to stdout.
+set -x
+
+# Exit on unset variable.
+set -u
+
+# Location of app source files.
+readonly SOURCE_DIR=app
+
+# Location of virtualenv.
+readonly VIRTUALENV_DIR=venv
+
+# Delete pyc files from previous builds.
+find . \
+  -name "*.pyc" \
+  -type f \
+  -not -path "./${VIRTUALENV_DIR}/*" \
+  -delete
+
+# Run unit tests and calculate code coverage.
+coverage run \
+  --source "${SOURCE_DIR}" \
+  --omit "*_test.py" \
+  -m unittest discover --pattern "*_test.py"
+coverage report
+
+# Check that source has correct formatting.
+yapf \
+  --diff \
+  --recursive \
+  --style google \
+  ./ \
+  --exclude=third_party/* \
+  --exclude="${VIRTUALENV_DIR}/*"
+
+# Check correct sorting for imports.
+isort \
+  . \
+  --force-single-line-imports \
+  --diff \
+  --check-only \
+  --skip-glob=third_party/* \
+  --skip-glob="${VIRTUALENV_DIR}/*"
+
+# Run static analysis for Python bugs/cruft.
+pyflakes "${SOURCE_DIR}/"
+
+# Check docstrings for style consistency.
+PYTHONPATH="$(pwd)/third_party/docstringchecker" \
+  pylint --reports=n --rcfile=.pylintrc "${SOURCE_DIR}"

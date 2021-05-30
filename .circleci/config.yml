@@ -1,6 +1,17 @@
 version: 2.1
 jobs:
-  build:
+  check_whitespace:
+    docker:
+      - image: cimg/base:2021.04
+    steps:
+      - checkout
+      - run:
+          name: Check for trailing whitespace
+          command: ./dev-scripts/check-trailing-whitespace
+      - run:
+          name: Check that all text files end in a trailing newline
+          command: ./dev-scripts/check-trailing-newline
+  build_python:
     docker:
       - image: circleci/python:3.7.3
     steps:
@@ -13,7 +24,7 @@ jobs:
             . venv/bin/activate
             pip install --requirement requirements.txt
             pip install --requirement dev_requirements.txt
-            ./dev-scripts/build
+            ./dev-scripts/build-python
       - persist_to_workspace:
           root: ./
           paths:
@@ -21,4 +32,5 @@ jobs:
 workflows:
   test:
     jobs:
-      - build
+      - check_whitespace
+      - build_python
