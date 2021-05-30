@@ -3,7 +3,7 @@
 import argparse
 import logging
 
-import dummy
+from app import dummy
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +19,7 @@ def configure_logging():
     root_logger.setLevel(logging.INFO)
 
 
-def main(args):
+def main(_):
     configure_logging()
     logger.info('Started runnning')
     print(dummy.dummy())

@@ -35,7 +35,6 @@ yapf \
   --recursive \
   --style google \
   ./ \
-  --exclude=third_party/* \
   --exclude="${VIRTUALENV_DIR}/*"
 
 # Check correct sorting for imports.
@@ -44,12 +43,10 @@ isort \
   --force-single-line-imports \
   --diff \
   --check-only \
-  --skip-glob=third_party/* \
   --skip-glob="${VIRTUALENV_DIR}/*"
 
 # Run static analysis for Python bugs/cruft.
 pyflakes "${SOURCE_DIR}/"
 
-# Check docstrings for style consistency.
-PYTHONPATH="$(pwd)/third_party/docstringchecker" \
-  pylint --reports=n --rcfile=.pylintrc "${SOURCE_DIR}"
+# Check for other style violations.
+PYTHONPATH="${SOURCE_DIR}" pylint "${SOURCE_DIR}"
