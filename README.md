@@ -1,6 +1,6 @@
 # Python3 Seed
 
-[![CircleCI](https://circleci.com/gh/mtlynch/python3_seed.svg?style=svg)](https://circleci.com/gh/mtlynch/python3_seed) [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](LICENSE)
+[![CircleCI](https://circleci.com/gh/mtlynch/python3_seed.svg?style=svg)](https://circleci.com/gh/mtlynch/python3_seed) [![License](https://img.shields.io/badge/license-Unlicense-blue)](LICENSE)
 
 ## Overview
 
@@ -27,7 +27,6 @@ mkdir -p ./venv && \
 
 To customize this for your project:
 
-1. Change `COPYRIGHT` to your name.
 1. Change `LICENSE` to [a license of your choosing](https://choosealicense.com/).
 1. Change the CircleCI badge in `README.md` to your own Circle CI project badge.
 1. Change the app name in `main.py` from `Python Seed` to your app's name.
