@@ -30,7 +30,7 @@ coverage run \
 coverage report
 
 # Check that source has correct formatting.
-yapf --diff --recursive ./
+yapf --diff --recursive --exclude=venv/* ./
 
 # Check correct sorting for imports.
 isort \
