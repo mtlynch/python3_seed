@@ -1,5 +1,5 @@
 coverage==6.5.0
-isort[requirements_deprecated_finder]==5.10.1
+isort[requirements_deprecated_finder]==5.11.3
 pyflakes==3.0.1
 pylint==2.15.2
 yapf==0.32.0
