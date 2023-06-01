@@ -13,7 +13,7 @@ jobs:
           command: ./dev-scripts/check-trailing-newline
   build_python:
     docker:
-      - image: circleci/python:3.7.3
+      - image: circleci/python:3.9.2
     steps:
       - checkout
       - run:

@@ -1,6 +1,7 @@
 # Python3 Seed
 
-[![CircleCI](https://circleci.com/gh/mtlynch/python3_seed.svg?style=svg)](https://circleci.com/gh/mtlynch/python3_seed) [![License](https://img.shields.io/badge/license-Unlicense-blue)](LICENSE)
+[![CircleCI](https://circleci.com/gh/mtlynch/python3_seed.svg?style=svg)](https://circleci.com/gh/mtlynch/python3_seed)
+[![License](https://img.shields.io/badge/license-Unlicense-blue)](LICENSE)
 
 ## Overview
 
