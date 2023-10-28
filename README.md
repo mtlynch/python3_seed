@@ -36,5 +36,5 @@ To customize this for your project:
 ## Run
 
 ```bash
-./app/main.py
+./main.py
 ```
