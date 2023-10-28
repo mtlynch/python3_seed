@@ -19,7 +19,6 @@ Specifically:
 mkdir -p ./venv && \
   virtualenv --python python3 ./venv && \
   . venv/bin/activate && \
-  pip install --requirement requirements.txt && \
   pip install --requirement dev_requirements.txt && \
   ./dev-scripts/enable-git-hooks
 ```
