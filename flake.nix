@@ -3,11 +3,12 @@
 
   # Python 3.12.0 release
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/e2b8feae8470705c3f331901ae057da3095cea10";
+
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
   inputs.pyproject-nix.url = "github:nix-community/pyproject.nix";
   # Don't use the pyproject.nix flake directly to avoid its inputs in our
-  #closure.
+  # closure.
   inputs.pyproject-nix.flake = false;
 
   outputs = { self, nixpkgs, flake-utils, pyproject-nix  }:
@@ -38,6 +39,9 @@
           packages = [
             pythonEnv
           ];
+          shellHook = ''
+            python --version
+          '';
         };
     });
 }
