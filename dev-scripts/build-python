@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Exit build script on first failure.
+# Exit on first failure.
 set -e
-
-# Echo commands to stdout.
-set -x
 
 # Exit on unset variable.
 set -u
+
+# Echo commands before executing them, by default to stderr.
+set -x
 
 # Location of app source files.
 readonly SOURCE_DIR=app
