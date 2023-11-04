@@ -1,5 +1,8 @@
 {
   "recommendations": [
-    "ms-python.python"
+    "ms-python.python",
+    "esbenp.prettier-vscode",
+    "eeyore.yapf",
+    "jnoortheen.nix-ide"
   ]
 }
