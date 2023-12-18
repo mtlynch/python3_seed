@@ -1,0 +1,18 @@
+src = ["app"]
+
+select = [
+  "I", # Enable isort rules.
+  ]
+ignore = []
+
+exclude = [
+    ".git",
+    "third_party",
+    "venv",
+]
+
+# Assume Python 3.9
+target-version = "py39"
+
+[isort]
+force-single-line = true
