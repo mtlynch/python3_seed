@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   check_whitespace:
     docker:
-      - image: cimg/base:2021.04
+      - image: cimg/base:2023.12
     steps:
       - checkout
       - run:
@@ -13,7 +13,7 @@ jobs:
           command: ./dev-scripts/check-trailing-newline
   build_python:
     docker:
-      - image: circleci/python:3.9.2
+      - image: cimg/python:3.9.18
     steps:
       - checkout
       - run:
