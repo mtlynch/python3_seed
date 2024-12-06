@@ -18,22 +18,6 @@
         "type": "github"
       }
     },
-    "nixpkgs": {
-      "locked": {
-        "lastModified": 1696325386,
-        "narHash": "sha256-ogs73SJAIePd7bljq1i1vKEOPn23Xe8aumMJKZjV45c=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "e2b8feae8470705c3f331901ae057da3095cea10",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "e2b8feae8470705c3f331901ae057da3095cea10",
-        "type": "github"
-      }
-    },
     "pyproject-nix": {
       "flake": false,
       "locked": {
@@ -50,11 +34,27 @@
         "type": "github"
       }
     },
+    "python-nixpkgs": {
+      "locked": {
+        "lastModified": 1696325386,
+        "narHash": "sha256-ogs73SJAIePd7bljq1i1vKEOPn23Xe8aumMJKZjV45c=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e2b8feae8470705c3f331901ae057da3095cea10",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e2b8feae8470705c3f331901ae057da3095cea10",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs",
-        "pyproject-nix": "pyproject-nix"
+        "pyproject-nix": "pyproject-nix",
+        "python-nixpkgs": "python-nixpkgs"
       }
     },
     "systems": {
