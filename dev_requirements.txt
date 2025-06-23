@@ -1,6 +1,6 @@
 coverage==7.9.1
 isort[requirements_deprecated_finder]==5.13.2
-pyflakes==3.3.2
+pyflakes==3.4.0
 pylint==2.15.2
 yapf==0.43.0
 -r requirements.txt
