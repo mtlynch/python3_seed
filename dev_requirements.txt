@@ -1,4 +1,4 @@
-coverage==7.10.4
+coverage==7.10.5
 isort[requirements_deprecated_finder]==5.13.2
 pyflakes==3.4.0
 pylint==2.15.2
