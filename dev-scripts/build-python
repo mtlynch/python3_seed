@@ -13,7 +13,7 @@ set -x
 readonly SOURCE_DIR=app
 
 # Location of virtualenv.
-readonly VIRTUALENV_DIR=venv
+readonly VIRTUALENV_DIR=.venv
 
 # Delete pyc files from previous builds.
 find . \
