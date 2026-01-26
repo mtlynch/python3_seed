@@ -3,46 +3,36 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-
-    # Python 3.12.0 release
-    python-nixpkgs.url = "github:NixOS/nixpkgs/e2b8feae8470705c3f331901ae057da3095cea10";
-
-    pyproject-nix = {
-      url = "github:nix-community/pyproject.nix";
-      flake = false;
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # 0.9.7
+    uv-nixpkgs.url = "github:NixOS/nixpkgs/1d4c88323ac36805d09657d13a5273aea1b34f0c";
   };
 
   outputs = {
     self,
-    python-nixpkgs,
     flake-utils,
-    pyproject-nix,
-  } @ inputs: let
-    pyproject = import (pyproject-nix + "/lib") {inherit (python-nixpkgs) lib;};
-
-    project = pyproject.project.loadRequirementsTxt {
-      requirements = ./dev_requirements.txt;
-    };
-  in
+    nixpkgs,
+    uv-nixpkgs,
+  }:
     flake-utils.lib.eachDefaultSystem (system: let
-      python = python-nixpkgs.legacyPackages.${system}.python3;
-
-      pythonEnv = python-nixpkgs.legacyPackages.${system}.python3.withPackages (
-        pyproject.renderers.withPackages {
-          inherit project python;
-        }
-      );
+      pkgs = nixpkgs.legacyPackages.${system};
+      uv = uv-nixpkgs.legacyPackages.${system}.uv;
     in {
-      formatter = python-nixpkgs.legacyPackages.${system}.alejandra;
+      formatter = pkgs.alejandra;
 
-      devShells.default = python-nixpkgs.legacyPackages.${system}.mkShell {
+      devShells.default = pkgs.mkShell {
         packages = [
-          pythonEnv
+          pkgs.python313
+          uv
         ];
 
         shellHook = ''
+          uv --version
           python --version
+          if [ -d .venv/bin ]; then
+            export VIRTUAL_ENV="$PWD/.venv"
+            export PATH="$PWD/.venv/bin:$PATH"
+          fi
         '';
       };
     });

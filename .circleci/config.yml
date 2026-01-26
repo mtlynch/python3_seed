@@ -1,4 +1,8 @@
 version: 2.1
+executors:
+  python:
+    docker:
+      - image: ghcr.io/astral-sh/uv:python3.13-trixie-slim
 jobs:
   check_whitespace:
     docker:
@@ -12,18 +16,16 @@ jobs:
           name: Check that all text files end in a trailing newline
           command: ./dev-scripts/check-trailing-newline
   build_python:
-    docker:
-      - image: cimg/python:3.9.18
+    executor: python
     steps:
       - checkout
       - run:
           name: Install requirements and run build script
           command: |
-            mkdir -p ./venv
-            virtualenv --python python3 ./venv
-            . venv/bin/activate
-            pip install --requirement requirements.txt
-            pip install --requirement dev_requirements.txt
+            uv venv
+            . .venv/bin/activate
+            uv pip install --requirement requirements.txt
+            uv pip install --requirement dev_requirements.txt
             ./dev-scripts/build-python
       - persist_to_workspace:
           root: ./
