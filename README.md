@@ -11,7 +11,7 @@ Specifically:
 
 * Enforces Python style rules with [YAPF](https://github.com/google/yapf)
 * Performs static analysis with [pyflakes](https://github.com/megies/pyflakes) and [pylint](https://github.com/PyCQA/pylint)
-* Sorts imports with [isort](https://github.com/timothycrosley/isort)
+* Sorts imports with [ruff](https://github.com/astral-sh/ruff)
 
 ## Development
 

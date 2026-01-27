@@ -23,10 +23,15 @@
       devShells.default = pkgs.mkShell {
         packages = [
           pkgs.python313
+          pkgs.ruff
           uv
         ];
 
         shellHook = ''
+          # Use nix-provided ruff to avoid pip's native binary incompatibility
+          # under nix.
+          export RUFF_BIN="${pkgs.ruff}/bin/ruff"
+
           uv --version
           python --version
           if [ -d .venv/bin ]; then
