@@ -11,15 +11,16 @@ Specifically:
 
 * Enforces Python style rules with [YAPF](https://github.com/google/yapf)
 * Performs static analysis with [pyflakes](https://github.com/megies/pyflakes) and [pylint](https://github.com/PyCQA/pylint)
-* Sorts imports with [isort](https://github.com/timothycrosley/isort)
+* Sorts imports with [ruff](https://github.com/astral-sh/ruff)
 
-## Installation
+## Development
 
 ```bash
-mkdir -p ./venv && \
-  virtualenv --python python3 ./venv && \
-  . venv/bin/activate && \
-  pip install --requirement dev_requirements.txt && \
+uv python pin 3.13.6 && \
+  uv venv && \
+  . .venv/bin/activate && \
+  uv pip install --requirement requirements.txt && \
+  uv pip install --requirement dev_requirements.txt && \
   ./dev-scripts/enable-git-hooks
 ```
 

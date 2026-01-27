@@ -1,47 +1,39 @@
 {
   description = "Create Nix development environment";
 
-  # Python 3.12.0 release
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/e2b8feae8470705c3f331901ae057da3095cea10";
+  inputs = {
+    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # 0.9.7
+    uv-nixpkgs.url = "github:NixOS/nixpkgs/1d4c88323ac36805d09657d13a5273aea1b34f0c";
+  };
 
-  inputs.flake-utils.url = "github:numtide/flake-utils";
-
-  inputs.pyproject-nix.url = "github:nix-community/pyproject.nix";
-  # Don't use the pyproject.nix flake directly to avoid its inputs in our
-  # closure.
-  inputs.pyproject-nix.flake = false;
-
-  outputs = { self, nixpkgs, flake-utils, pyproject-nix  }:
-    let
-      pyproject = import (pyproject-nix + "/lib") { inherit (nixpkgs) lib; };
-
-      # Load/parse dev_requirements.txt
-      project = pyproject.project.loadRequirementsTxt {
-        requirements = ./dev_requirements.txt;
-      };
-
-    in
-    flake-utils.lib.eachDefaultSystem (system:
-    let
+  outputs = {
+    self,
+    flake-utils,
+    nixpkgs,
+    uv-nixpkgs,
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
       pkgs = nixpkgs.legacyPackages.${system};
-      python = pkgs.python3;
+      uv = uv-nixpkgs.legacyPackages.${system}.uv;
+    in {
+      formatter = pkgs.alejandra;
 
-      pythonEnv = (
-          # Render requirements.txt into a Python withPackages environment.
-          pkgs.python3.withPackages (pyproject.renderers.withPackages {
-            inherit project python;
-          })
-        );
-    in
-    {
-      devShell =
-        pkgs.mkShell {
-          packages = [
-            pythonEnv
-          ];
-          shellHook = ''
-            python --version
-          '';
-        };
+      devShells.default = pkgs.mkShell {
+        packages = [
+          pkgs.python313
+          uv
+        ];
+
+        shellHook = ''
+          uv --version
+          python --version
+          if [ -d .venv/bin ]; then
+            export VIRTUAL_ENV="$PWD/.venv"
+            export PATH="$PWD/.venv/bin:$PATH"
+          fi
+        '';
+      };
     });
 }
