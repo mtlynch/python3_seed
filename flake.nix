@@ -28,7 +28,8 @@
         ];
 
         shellHook = ''
-          # Use nix-provided ruff to avoid pip's native binary incompatibility under nix.
+          # Use nix-provided ruff to avoid pip's native binary incompatibility
+          # under nix.
           export RUFF_BIN="${pkgs.ruff}/bin/ruff"
 
           uv --version
