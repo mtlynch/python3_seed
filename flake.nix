@@ -28,9 +28,11 @@
         ];
 
         shellHook = ''
+          # Use nix-provided ruff to avoid pip's native binary incompatibility under nix.
+          export RUFF_BIN="${pkgs.ruff}/bin/ruff"
+
           uv --version
           python --version
-          export RUFF_BIN="${pkgs.ruff}/bin/ruff"
           if [ -d .venv/bin ]; then
             export VIRTUAL_ENV="$PWD/.venv"
             export PATH="$PWD/.venv/bin:$PATH"
