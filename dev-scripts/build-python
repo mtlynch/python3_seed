@@ -26,11 +26,11 @@ find . \
 coverage run \
   --source "${SOURCE_DIR}" \
   --omit "*_test.py" \
-  -m unittest discover --pattern "*_test.py"
+  --module unittest discover --start-directory "${SOURCE_DIR}" --pattern "*_test.py"
 coverage report
 
 # Check that source has correct formatting.
-yapf --diff --recursive ./
+yapf --diff --recursive "${SOURCE_DIR}" main.py
 
 # Check correct sorting for imports.
 isort \
