@@ -26,7 +26,9 @@ find . \
 coverage run \
   --source "${SOURCE_DIR}" \
   --omit "*_test.py" \
-  --module unittest discover --start-directory "${SOURCE_DIR}" --pattern "*_test.py"
+  --module unittest discover \
+  --start-directory "${SOURCE_DIR}" \
+  --pattern "*_test.py"
 coverage report
 
 # Check that source has correct formatting.
