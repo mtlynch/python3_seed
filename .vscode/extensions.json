@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "charliermarsh.ruff",
     "ms-python.python",
     "esbenp.prettier-vscode",
     "eeyore.yapf",

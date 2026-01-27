@@ -23,12 +23,14 @@
       devShells.default = pkgs.mkShell {
         packages = [
           pkgs.python313
+          pkgs.ruff
           uv
         ];
 
         shellHook = ''
           uv --version
           python --version
+          export RUFF_BIN="${pkgs.ruff}/bin/ruff"
           if [ -d .venv/bin ]; then
             export VIRTUAL_ENV="$PWD/.venv"
             export PATH="$PWD/.venv/bin:$PATH"

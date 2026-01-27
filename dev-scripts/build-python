@@ -14,6 +14,7 @@ readonly SOURCE_DIR=app
 
 # Location of virtualenv.
 readonly VIRTUALENV_DIR=.venv
+readonly RUFF_BIN="${RUFF_BIN:-ruff}"
 
 # Delete pyc files from previous builds.
 find . \
@@ -32,8 +33,8 @@ coverage report
 # Check that source has correct formatting.
 yapf --diff --recursive ./
 
-# Run static analysis for Python bugs/cruft.
-ruff check \
+# Check import sorting/style with ruff (isort rules only).
+${RUFF_BIN} check \
   "${SOURCE_DIR}/"
 
 # Run static analysis for Python bugs/cruft.

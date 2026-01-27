@@ -1,10 +1,5 @@
 src = ["app"]
 
-select = [
-  "I", # Enable isort rules.
-  ]
-ignore = []
-
 exclude = [
     ".git",
     "third_party",
@@ -14,5 +9,11 @@ exclude = [
 # Assume Python 3.9
 target-version = "py39"
 
-[isort]
+[lint]
+select = [
+  "I", # Enable isort rules.
+]
+ignore = []
+
+[lint.isort]
 force-single-line = true
