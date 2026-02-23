@@ -1,6 +1,6 @@
 coverage==7.13.4
 pyflakes==3.4.0
 pylint==2.15.2
-ruff==0.15.1
+ruff==0.15.2
 yapf==0.43.0
 -r requirements.txt
